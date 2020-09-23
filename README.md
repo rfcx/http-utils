@@ -2,7 +2,7 @@ A converter/validator for http query params or body attributes.
 
 How to use:
 ```javascript
-  const Converter = require('@rfcx/http-params-converter')
+  const { Converter, ValidationError } = require('@rfcx/http-params-converter')
   const convertedParams = {}
   const params = new Converter(req.body, convertedParams)
 
