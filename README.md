@@ -1,5 +1,6 @@
-A converter/validator for http query params or body attributes.
+A set of useful utils for http methods. Includes converter/validator for http query params or body attributes, custom error types.
 
+## Converter/validator
 How to use:
 ```javascript
   const { Converter, ValidationError } = require('@rfcx/http-params-converter')

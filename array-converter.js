@@ -1,5 +1,5 @@
 const Conversion = require('./conversion')
-const ValidationError = require('./validation-error')
+const { ValidationError } = require('./errors')
 
 class ArrayConverter {
   constructor (sourceArray) {

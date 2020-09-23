@@ -1,5 +1,5 @@
 const Conversion = require('./conversion')
-const ValidationError = require('./validation-error')
+const { ValidationError, ForbiddenError, EmptyResultError } = require('./errors')
 
 class Converter {
   constructor (validatedObject, transformedObject) {
@@ -41,5 +41,7 @@ class Converter {
 
 module.exports = {
   Converter,
-  ValidationError
+  ValidationError,
+  ForbiddenError,
+  EmptyResultError
 }
