@@ -3,7 +3,7 @@ A set of useful utils for http methods. Includes converter/validator for http qu
 ## Converter/validator
 How to use:
 ```javascript
-  const { Converter, ValidationError } = require('@rfcx/http-params-converter')
+  const { Converter, ValidationError } = require('@rfcx/http-utils')
   const convertedParams = {}
   const params = new Converter(req.body, convertedParams)
 
