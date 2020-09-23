@@ -10,5 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "moment-timezone": "0.5.31"
+  },
+  "homepage": "https://github.com/rfcx/http-params-converter#readme",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/rfcx/http-params-converter.git"
   }
 }

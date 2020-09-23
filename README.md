@@ -17,7 +17,10 @@ How to use:
 
   params.vaidate()
     .then(() => {
-
+      res.json{{
+        filename: convertedParams.filename,
+        duration: convertedParams.duration
+      }}
     })
     .catch((err) => {
       // handle custom error with type `ValidationError` here
