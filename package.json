@@ -15,8 +15,5 @@
   "repository": {
     "type" : "git",
     "url" : "https://github.com/rfcx/http-utils.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
