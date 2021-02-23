@@ -22,8 +22,17 @@ class ValidationError extends Error {
   }
 }
 
+class UnauthorizedError extends Error {
+  constructor (message) {
+    super(message)
+    this.message = message
+    this.name = 'UnauthorizedError'
+  }
+}
+
 module.exports = {
   ForbiddenError,
   EmptyResultError,
-  ValidationError
+  ValidationError,
+  UnauthorizedError
 }

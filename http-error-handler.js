@@ -1,10 +1,13 @@
 const httpError = require('./http-error')
-const { ValidationError, ForbiddenError, EmptyResultError } = require('./errors')
+const { ValidationError, ForbiddenError, EmptyResultError, UnauthorizedError } = require('./errors')
 
 function httpErrorHandler (req, res, fallbackMessage) {
   return (err) => {
     if (err instanceof ValidationError) {
       return httpError(req, res, 400, null, err.message)
+    }
+    if (err instanceof UnauthorizedError) {
+      return httpError(req, res, 401, null, err.message)
     }
     if (err instanceof ForbiddenError) {
       return httpError(req, res, 403, null, err.message)
