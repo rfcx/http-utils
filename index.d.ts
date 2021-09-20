@@ -39,7 +39,7 @@ declare module '@rfcx/http-utils' {
     nonEmptyArrayItem(): this
     isObject(): this
     isValidTimezone(): this
-    isEqualToAny(): this
+    isEqualToAny(values: any[]): this
   }
   class Converter {
     constructor(validatedObject: any, transformedObject: any)
