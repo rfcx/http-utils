@@ -367,9 +367,11 @@ class Conversion {
 
   isEqualToAny (arr) {
     this.conversions.push(() => {
-      if (!arr.includes(this.value)) {
-        this.throwError(`should be one of these values: ${arr.join(', ')}`)
-      }
+      (Array.isArray(this.value) ? this.value : [this.value] ).forEach((value) => {
+        if (!arr.includes(value)) {
+          this.throwError(`should be one of these values: ${arr.join(', ')}`)
+        }
+      })
     })
 
     return this
