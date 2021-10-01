@@ -53,4 +53,24 @@ declare module '@rfcx/http-utils' {
   }
   function httpError (req: Object, res: Object, code: number, context: string, mes: string): void
   function httpErrorHandler (req: Object, res: Object, fallbackMessage: string): typeof httpError
+  class ForbiddenError {
+    constructor(message: string)
+    message: string
+    name: string
+  }
+  class EmptyResultError {
+    constructor(message: string)
+    message: string
+    name: string
+  }
+  class ValidationError {
+    constructor(message: string)
+    message: string
+    name: string
+  }
+  class UnauthorizedError {
+    constructor(message: string)
+    message: string
+    name: string
+  }
 }
