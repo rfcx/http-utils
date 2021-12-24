@@ -64,3 +64,8 @@ nonEmptyArrayItem | checks if array is not empty | .nonEmptyArrayItem()
 isObject | checks if param is object | .isObject()
 isValidTimezone | checks if param is valid timezone valie (`America/Los_Angeles`) | .isValidTimezone()
 isEqualToAny | checks if param is equal to any of specified in the array | .isEqualToAny(['aaa', 'bbb', 'ccc'])
+
+## Publishing
+
+Publishing to NPM registry is done automatically via GitHub Actions once new release is published in the GitHub repository.
+You must have `NPM_PUBLISH_TOKEN` secret to be defined in your repository or organization. Reference [this](https://docs.github.com/en/actions/security-guides/encrypted-secrets) or [this](https://sergiodxa.com/articles/github-actions-npm-publish#configure-the-secret) for instructions.
