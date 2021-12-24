@@ -41,13 +41,17 @@ declare module '@rfcx/http-utils' {
     isValidTimezone(): this
     isEqualToAny(values: any[]): this
   }
+  interface converterOptions {
+    camelize?: boolean
+  }
   class Converter {
-    constructor(validatedObject: any, transformedObject: any)
+    constructor(validatedObject: any, transformedObject: any, options?: converterOptions)
     validatedObject: any
     currentValue: any
     currentProperty: string
     transformedObject: any
     conversions: any[]
+    options: converterOptions
     convert(property: string): Conversion
     validate(): any
   }

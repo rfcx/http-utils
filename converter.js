@@ -1,8 +1,9 @@
 const Conversion = require('./conversion')
+const { toCamelObject } = require('./formatters/string-cases')
 const { ValidationError, ForbiddenError, EmptyResultError } = require('./errors')
 
 class Converter {
-  constructor (validatedObject, transformedObject) {
+  constructor (validatedObject, transformedObject, options = {}) {
     if (validatedObject instanceof Converter) {
       validatedObject = validatedObject.validatedObject
     }
@@ -11,6 +12,10 @@ class Converter {
     this.currentProperty = null
     this.transformedObject = transformedObject || {}
     this.conversions = []
+    this.options = {
+      camelize: false,
+      ...options
+    }
   };
 
   convert (property) {
@@ -31,7 +36,7 @@ class Converter {
           }
         }
         if (exceptions.length === 0) {
-          return this.transformedObject
+          return this.options.camelize ? toCamelObject(this.transformedObject, 1) : this.transformedObject
         } else {
           throw new ValidationError(`Validation errors: ${exceptions.join('; ')}.`)
         }

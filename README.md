@@ -5,7 +5,7 @@ How to use:
 ```javascript
   const { Converter, ValidationError } = require('@rfcx/http-utils')
   const convertedParams = {}
-  const params = new Converter(req.body, convertedParams)
+  const params = new Converter(req.body, convertedParams, { camelize: true })
 
   params.convert('filename').toString()
   params.convert('duration').toInt().minimum(1)
@@ -19,6 +19,7 @@ How to use:
   params.vaidate()
     .then(() => {
       res.json{{
+        sampleRate: convertedParams.sampleRate
         filename: convertedParams.filename,
         duration: convertedParams.duration
       }}
