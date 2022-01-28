@@ -40,6 +40,7 @@ declare module '@rfcx/http-utils' {
     isObject(): this
     isValidTimezone(): this
     isEqualToAny(values: any[]): this
+    isPassingRegExp(exp: RegExp, customErrMes?: string)
   }
   interface converterOptions {
     camelize?: boolean

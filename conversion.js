@@ -376,6 +376,16 @@ class Conversion {
 
     return this
   }
+
+  isPassingRegExp (exp, customErrMes) {
+    this.conversions.push(() => {
+      const arr = Array.isArray(this.value) ? this.value : [this.value]
+      if (!arr.every(item => exp.test(item))) {
+        return this.throwError(customErrMes || 'is not passing regular expression')
+      }
+      return this
+    })
+  }
 }
 
 

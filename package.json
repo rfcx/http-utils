@@ -1,6 +1,6 @@
 {
   "name": "@rfcx/http-utils",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A set of useful utils for http methods. Includes converter/validator for http query params or body attributes, custom error types.",
   "main": "index.js",
   "scripts": {
