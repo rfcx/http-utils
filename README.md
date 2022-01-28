@@ -64,6 +64,7 @@ nonEmptyArrayItem | checks if array is not empty | .nonEmptyArrayItem()
 isObject | checks if param is object | .isObject()
 isValidTimezone | checks if param is valid timezone valie (`America/Los_Angeles`) | .isValidTimezone()
 isEqualToAny | checks if param is equal to any of specified in the array | .isEqualToAny(['aaa', 'bbb', 'ccc'])
+isPassingRegExp | checks if param is passing specified regular expression | .isPassingRegExp(/[a-z0-9]{12}/, 'should consist of 12 lower-cased characters or digits')
 
 ## Publishing
 
