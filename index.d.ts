@@ -60,22 +60,22 @@ declare module '@rfcx/http-utils' {
   function httpErrorHandler (req: Object, res: Object, fallbackMessage: string): (err: ForbiddenError | EmptyResultError | ValidationError | UnauthorizedError | Error) => {}
   function mapAxiosErrorToCustom (err: any): never
   class ForbiddenError {
-    constructor(message: string)
+    constructor(message?: string)
     message: string
     name: string
   }
   class EmptyResultError {
-    constructor(message: string)
+    constructor(message?: string)
     message: string
     name: string
   }
   class ValidationError {
-    constructor(message: string)
+    constructor(message?: string)
     message: string
     name: string
   }
   class UnauthorizedError {
-    constructor(message: string)
+    constructor(message?: string)
     message: string
     name: string
   }
