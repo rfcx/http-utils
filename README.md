@@ -70,3 +70,35 @@ isPassingRegExp | checks if param is passing specified regular expression | .isP
 
 Publishing to NPM registry is done automatically via GitHub Actions once new release is published in the GitHub repository.
 You must have `NPM_PUBLISH_TOKEN` secret to be defined in your repository or organization. Reference [this](https://docs.github.com/en/actions/security-guides/encrypted-secrets) or [this](https://sergiodxa.com/articles/github-actions-npm-publish#configure-the-secret) for instructions.
+
+## Installing (GitHub Packages)
+
+`@rfcx/http-utils` is published to **GitHub Packages** (`npm.pkg.github.com`), private to the `rfcx`
+GitHub org — not to npmjs.org (the public `@rfcx` npm scope belongs to a personal account that is
+no longer available; old versions there are frozen).
+
+In the consuming project, commit an `.npmrc` with the **registry line only**:
+
+```
+@rfcx:registry=https://npm.pkg.github.com
+```
+
+and supply the credential OUTSIDE the repo (a classic token with `read:packages`):
+
+- locally: `~/.npmrc` → `//npm.pkg.github.com/:_authToken=<token>`
+- GitHub Actions: `actions/setup-node` with `registry-url: https://npm.pkg.github.com`, `scope: '@rfcx'`,
+  and `NODE_AUTH_TOKEN` in the install step's env
+- Docker: a BuildKit secret written to a tmpfs userconfig inside the install `RUN` only, with the npm
+  cache on the same tmpfs (npm 6 stores the auth header in its cache index):
+  ```
+  RUN --mount=type=secret,id=npm_token,required=true --mount=type=tmpfs,target=/npmauth \
+      printf '//npm.pkg.github.com/:_authToken=%s\n' "$(cat /run/secrets/npm_token)" > /npmauth/npmrc && \
+      NPM_CONFIG_USERCONFIG=/npmauth/npmrc NPM_CONFIG_CACHE=/npmauth/npm-cache yarn --frozen-lockfile
+  ```
+
+Do **not** put `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` in the committed `.npmrc`: yarn 1
+then fails EVERY later command (`yarn start` included) with `Failed to replace env in config` when the
+variable is absent.
+
+Publishing: push a tag equal to `package.json` `version` — `.github/workflows/publish.yml` publishes it with
+the repo's own `GITHUB_TOKEN`.
